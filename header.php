@@ -94,10 +94,12 @@ Header template file
                             </div>
                         </div>
                         <div class="col-auto order-md-last">
-                            <a role="button" class="bubble-link bubble-link--orange">
+							<?php if (santacruz_show_getit_link()) : ?>
+                            <a href="<?php santacruz_getit_url(); ?>" class="bubble-link bubble-link--orange">
                                 <span><?php santacruz_icon('rss'); ?></span>
                                 <span>Get it</span>
-                            </a>
+							</a>
+							<?php endif; ?>
                         </div>
                     </div>
                 </div>

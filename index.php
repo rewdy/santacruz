@@ -19,9 +19,7 @@ Main template file
         }
     ?>
     <div class="<?php echo implode(' ', $classes); ?>">
-
     <?php if (have_posts()) : ?>
-
     <?php if (is_archive()) get_template_part('content/archive-heading'); ?>
 
         <?php /* Start the Loop */ ?>

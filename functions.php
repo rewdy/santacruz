@@ -54,6 +54,49 @@ if (function_exists('register_nav_menu')) {
 	register_nav_menu('footer', 'Footer Menu');
 }
 
+/**
+ * Custom Settings
+ */
+class santacruz_customize {
+	public static function register($wp_customize) {
+		// add the sections
+		$wp_customize->add_section('santacruz_options',
+			array(
+				'title'			=> __('Theme Options', 'santacruz'),
+				'priority'		=> 55,
+				'capability'	=> 'edit_theme_options',
+				'description' 	=> __('Enable certain features of the theme.', 'santacruz')
+			)
+		);
+
+		// Show home page title setting
+		$wp_customize->add_setting('santacruz_get_it_link',
+			array(
+				'default' 	=> 0,
+				'type'		=> 'option',
+				'capability'=> 'edit_theme_options',
+				'transport'	=> 'refresh',
+			)
+		);
+		// Show home page title control
+		$page_options = array(0 => 'Do not use; hide link');
+		$all_pages = get_pages();
+		foreach ($all_pages as $page) {
+			$page_options[$page->ID] = $page->post_title;
+		}
+		$wp_customize->add_control('santacruz_get_it_link',
+			array(
+				'label'   => '"Get it" Link Page',
+				'description' => __('What page should the orange "Get It" link point to?'),
+				'section' => 'santacruz_options',
+				'type'    => 'select',
+				'choices' => $page_options,
+			)
+		);
+	}
+}
+add_action('customize_register', array('santacruz_customize', 'register'));
+
 // Add widget areas
 function santacruz_widget_init() {
 	// Register footer widgets
@@ -84,6 +127,17 @@ function santacruz_featured_image() {
 	}
 
 	return (!empty($image)) ? $image : false;
+}
+
+// GET IT link
+function santacruz_show_getit_link() {
+	return (get_option('santacruz_get_it_link') !== 0);
+}
+function santacruz_getit_url() {
+	$getit_link_post_id = get_option('santacruz_get_it_link');
+	if ($getit_link_post_id !== 0) {
+		echo get_permalink($getit_link_post_id);
+	}
 }
 
 // Content width
