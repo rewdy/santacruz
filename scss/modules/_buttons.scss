@@ -1,0 +1,61 @@
+// Buttons
+//
+[role="button"] {
+    cursor:pointer;
+}
+
+@mixin btn-base() {
+    display:inline-block;
+	padding:$padding-button;
+	margin:0 0.5em 0 0;
+	border:0 none;
+	border-radius:$button-radius;
+	font-family:$font-family;
+	font-weight:$font-weight-normal;
+    font-size:1em;
+    text-decoration: none;
+	line-height:1.5;
+    cursor:pointer;
+    transition:transform $animation-duration ease-out, box-shadow $animation-duration ease-out;
+    &:hover {
+        transform:scale(1.05) rotate(-2deg);
+        @include hovershadow();
+    }
+	&:focus {
+		@include focus();
+    }
+}
+@mixin btn-color($which) {
+    background-color: $which;
+    color: contrasting-text($which);
+    &:hover {
+        $bg-color:lighten-darken($which, 8%);
+        background-color: $bg-color;
+        color: contrasting-text($bg-color);
+    }
+}
+
+.btn {
+	@include btn-base();
+}
+
+@each $color in map-keys($colors) {
+    .btn-#{$color} {
+        @include btn-color(map-get($colors, $color));
+    }
+}
+
+.btn-reset {
+	background-color:$screen;
+	color:$form-color-button;
+}
+.btn-submit {
+	font-weight:$font-weight-bold;
+	padding-left:2em;
+	padding-right:2em;
+}
+
+a.btn,
+button.btn {
+	@extend .ripple;
+}

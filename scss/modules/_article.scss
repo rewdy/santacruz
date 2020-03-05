@@ -1,0 +1,54 @@
+.page-title {
+	text-align:center;
+}
+
+.article-listed {
+	padding:3em 0;
+	background-color:fade-out(#fff, 0.35);
+	border: solid $line-color;
+	border-width: 1px 0;
+	+ .article-listed {
+		margin-top:2em;
+	}
+	.icon-play {
+		margin-top:3.25em;
+	}
+}
+
+.article-post-date {
+    display:inline-block;
+    padding:0 0 0 1em;
+    border-left:1.5em solid $brand-primary;
+    font-size:$font-size-small;
+    color:$text-light;
+    line-height:1.2;
+}
+
+.article-meta {
+    margin-top:3em;
+}
+@media (max-width:breakpoint-down(sm)) {
+    .article-taxonomy {
+        margin-bottom:1em;
+    }
+}
+
+.directional-links {
+	margin-top:3em;
+	a {
+		display:block;
+		background-color:$page-background;
+		padding:$grid-gutter ($grid-gutter/2);
+		transition:all $animation-duration ease-out;
+		&:hover {
+			background-color:$screen;
+			color:#000;
+		}
+	}
+	.nav-previous a:hover {
+		padding-left:$grid-gutter;
+	}
+	.nav-next a:hover {
+		padding-right:$grid-gutter;
+	}
+}

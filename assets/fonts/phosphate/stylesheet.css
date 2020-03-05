@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Phosphate Inline';
+    src: url('phosphate-inline-webfont.woff2') format('woff2'),
+         url('phosphate-inline-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Phosphate';
+    src: url('phosphate-solid-webfont.woff2') format('woff2'),
+         url('phosphate-solid-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

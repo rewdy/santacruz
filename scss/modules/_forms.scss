@@ -1,0 +1,204 @@
+/*	-----
+	Forms
+*/
+
+// basic form item container
+.form-item,
+.form-item fieldset {
+	margin:0 0 1em 0;
+}
+
+.form-action {
+	text-align: center;
+	padding-top:1em;
+	border-top:1px solid $line-color;
+	.button,
+	button {
+		margin:0 0.125em;
+	}
+}
+
+// basic fieldsets
+fieldset {
+	margin:0 0 $line-height 0;
+	padding:1em 1.25em 1em 1.25em;
+	border:1px solid $line-color;
+	min-width:0;
+	p {
+		margin-bottom:1em;
+	}
+}
+legend {
+	float:left;
+	width:100%;
+	padding:0.5em 1.25em;
+	position:relative;
+	top:-1em;
+	left:-1.25em;
+	font-family:$alt-font;
+	font-weight:normal;
+	background-color:$screen-lt;
+	box-sizing:content-box;
+	+ * {
+		margin-top:2.5em!important;
+	}
+}
+
+// standard labels, legends for checkbox and radio arrays
+label, .label {
+	display:block;
+	font-family:$alt-font;
+	font-weight:normal;
+}
+
+// standard input help
+.form-item .input-help,
+.form-item .help {
+	margin-top:-0.5em;
+	font-size:0.9em;
+	font-style:italic;
+}
+
+// Required indicator
+.required {
+	color:$color-danger;
+	font-size:$font-size-small;
+	font-weight:$font-weight-normal;
+}
+.form-item.form-required label:after {
+	content:'(Required)';
+	margin-left:0.5em;
+	@extend .required;
+}
+
+// Form elements
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+textarea,
+select {
+	width:100%;
+	max-width:100%;
+	font-size:1em;
+	font-family:$font-family;
+	padding:$padding-input;
+	margin-bottom:0.5em;
+	background-color:#fff;
+	border:1px solid $line-color;
+	border-radius:$form-radius;
+	outline: none;
+	&:focus {
+		border-color:$line-color-dark;
+		@include focus();
+	}
+}
+
+
+// Element specifics
+//
+// Set default size for standard elements
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=range] {
+	width: 24em;
+}
+
+// Set width to auto if a size is set
+input[size] {
+	width:auto;
+}
+
+// Clean up select boxes
+select {
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	border-radius:$form-radius;
+	background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEwcHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDEwIDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0MC4zICgzMzgzOSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+U2xpY2UgMTwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJHcm91cC0zIiBmaWxsPSIjNkU2RTZGIj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlRyaWFuZ2xlIiBwb2ludHM9IjUgMCAxMCA2IDAgNiI+PC9wb2x5Z29uPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iVHJpYW5nbGUtQ29weSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNS4wMDAwMDAsIDEzLjAwMDAwMCkgc2NhbGUoMSwgLTEpIHRyYW5zbGF0ZSgtNS4wMDAwMDAsIC0xMy4wMDAwMDApICIgcG9pbnRzPSI1IDEwIDEwIDE2IDAgMTYiPjwvcG9seWdvbj4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==);
+	background-position:right 0.5em center;
+	background-repeat:no-repeat;
+	background-size:0.6em;
+	padding-right:1.75em;
+	min-width:12em;
+}
+
+// Allow mutliselects to have automatic heights
+select[multiple],
+select[size] {
+	height:auto;
+}
+
+input[type=file] {
+	display:block;
+}
+
+input[type=range] {
+	display:block;
+}
+
+input[type=color] {
+	width:12em;
+	height:3em;
+}
+
+// Checkboxes, radios, etc
+.selectables,
+.radios,
+.checkboxes {
+	margin-bottom:0.75em;
+	label {
+		font-weight:normal;
+		cursor:pointer;
+	}
+	&.inline label {
+		display:inline;
+		margin-right:1em;
+	}
+}
+
+// buttons
+[type="button"],
+[type="submit"] {
+	@include btn-base();
+	@include btn-color($form-color-button);
+}
+
+// media specifics
+@media only screen and (max-width: breakpoint(sm)) {
+	input[type=text],
+	input[type=email],
+	input[type=number],
+	input[type=password],
+	input.long {
+		width:100%;
+	}
+	input.narrow {
+		width:45%;
+	}
+}
+
+// Form grid
+// Grids within forms work automatically. These styles just help with spacing.
+%gformspacing {
+	padding-top:0;
+	padding-bottom:0;
+}
+@for $i from 1 through $grid-columns {
+	form .grid,
+	form .row {
+		.g#{$i} {
+			@extend %gformspacing;
+		}
+	}
+}

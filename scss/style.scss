@@ -1,0 +1,160 @@
+/**
+ * @file
+ * Your Project Stylesheet
+*/
+
+// Functions
+@import "modules/_functions";
+
+// VARIABLES
+// Layout
+$grid-columns:12;
+$grid-gutter:2em;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+$max-width:1100px;
+
+// Type
+$font-size:20px;
+$font-size-small:0.8em;
+$font-size-large:1.25em;
+$font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Sans Serif', Icons /*!System*/;
+$alt-font: 'Phosphate', sans-serif; // this is for an alternative font
+$font-weight-light:300;
+$font-weight-normal:300;
+$font-weight-bold:700;
+$font-scale:1.6;
+$line-height:$font-scale + em;
+$text-margin-bottom:1.5rem;
+
+// Background colors
+$page-background:#fff;
+$footer-background:#fff;
+
+// Text colors
+$text-color:#555;
+$text-light:minimum-contrast-text(#ddd, $page-background);
+
+// Design colors
+$brand-primary: #c64eee;
+$brand-secondary: #73dbbe;
+$brand-info: #4BB9DE;
+$brand-success: #c1e88d;
+$brand-warning: #f2f846;
+$brand-danger: #d94137;
+$brand-light: #ccc;
+$brand-dark:$text-color;
+$accent: $brand-primary;
+$pop: $brand-success;
+
+$colors: (
+	primary: $brand-primary,
+	secondary: $brand-secondary,
+	info: $brand-info,
+	success: $brand-success,
+	warning: $brand-warning,
+	danger: $brand-danger,
+	light: $brand-light,
+	dark: $brand-dark
+);
+
+$selection: fade-out($pop, 0.3);
+$link-color: $accent;
+$link-hover: $pop;
+
+// Indicator colors
+$color-info: $pop;
+$screen-info: change-color($color-info, $lightness:90%);
+$color-success: #1d9428;
+$screen-success: change-color($color-success, $lightness:90%);
+$color-warning: #d4ae2f;
+$screen-warning: change-color($color-warning, $lightness:90%);
+$color-danger: #c0343b;
+$screen-danger: change-color($color-danger, $lightness:90%);
+
+// Form colors
+$form-color-button: $link-color;
+$form-color-focus: $text-light;
+
+// Line colors
+$line-color: $brand-light;
+$line-color-dark: #999;
+
+// Radii
+$master-radius: 0;
+$form-radius: $master-radius;
+$button-radius: $form-radius;
+$box-radius: $master-radius;
+
+// Padding
+$padding-menu:0.75em 1em;
+$padding-button:0.5em 1em;
+$padding-btn: $padding-button;
+$padding-input:0.5rem;
+
+// Screens
+$screen: #ddd;
+$screen-lt: #fff;
+$screen-dk: #444;
+
+$animation-duration: 100ms;
+
+// Mixies
+@import "modules/_mixins";
+
+// Core
+@import "modules/_core";
+@import "modules/_layout";
+
+body {
+	// this is for the footer
+	background-color:$footer-background;
+}
+.page {
+	background-color:$page-background;
+	background-image: radial-gradient($line-color 1px,transparent 1px), radial-gradient($line-color 1px,
+	transparent 1px);
+	background-position: 0 0,25px 25px;
+	background-attachment: fixed;
+	background-size: 50px 50px;
+}
+@import "modules/_header";
+@import "modules/_menu";
+main {
+	padding:($grid-gutter/2) 0 0 0;
+}
+.footer-site {
+	padding:($grid-gutter/2) 0;
+	color:$text-light;
+}
+
+// Type
+@import "modules/_type";
+
+@import "modules/_article";
+@import "modules/_comments";
+
+@import "modules/_icons";
+
+// Forms
+@import "modules/_buttons"; // make sure this comes before form
+@import "modules/_forms";
+@import "modules/_social-links";
+
+.assistive-text,
+.sr-only {
+	position: absolute;
+	width:0;
+	height:0;
+	overflow: hidden;
+	top:0;
+	left:0;
+}
+
+// Animations
+@import "modules/_animations";

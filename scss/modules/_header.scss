@@ -1,0 +1,154 @@
+.header-site {
+    padding:3em 0;
+}
+
+.branding-link {
+	display:inline-block;
+	position:relative;
+	font-family:"Phosphate Inline", sans-serif;
+	font-size:4.5rem;
+    font-weight:normal;
+	line-height:0.9;
+	color:#000;
+	text-decoration: none;
+	transition:transform $animation-duration ease-out;
+	&:hover {
+		color:$brand-info;
+		transform:scale(1.05) rotate(-2deg);
+	}
+	&:after {
+		content:"";
+		position:absolute;
+		background-color: $brand-primary;
+		bottom:-1.75rem;
+		left:0;
+		right:0;
+		height:14px;
+	}
+	@media (max-width: breakpoint-down(md)) {
+		font-size:2em;
+		line-height:1;
+	}
+}
+
+.tagline {
+	display:block;
+	margin-bottom:1rem;
+	color:$brand-primary;
+	font-style:italic;
+}
+
+$bubble-size: 80px;
+.bubble-link {
+	position:relative;
+	z-index:2;
+	display:inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width:$bubble-size;
+	height:$bubble-size;
+	border-radius:($bubble-size/2);
+	text-align:center;
+	text-decoration: none;
+	text-transform:uppercase;
+	background-color:$brand-success;
+	font-size:$font-size-small;
+	line-height:1.5;
+	color:contrasting-text($brand-success);
+	transition:transform 150ms ease-in, box-shadow 150ms ease-in;
+	svg.icon {
+		font-size:1.5em;
+		stroke-width:2.5;
+	}
+	&:after {
+		content: "";
+		position: absolute;
+		display: block;
+		z-index:-1;
+		top:0; left:0;
+		width:100%;
+		height:100%;
+		border-radius: 50%;
+		background-color:$brand-success;
+		opacity:0.6;
+	}
+	&.radiate:after {
+		animation:radiate 300ms ease-out;
+	}
+	&:hover {
+		background-color:darken($brand-success, 8%);
+		color:contrasting-text($brand-success);
+		transform:scale(1.1);
+		@include hovershadow();
+	}
+	&.bubble-link--orange {
+		background-color:#eca938;
+		color:#fff;
+		&:after {
+			background-color:#eca938;
+		}
+		&:hover {
+			background-color:darken(#eca938, 8%);
+			color:#fff;
+		}
+	}
+}
+
+// Menu
+$menu-min-width:260px;
+.menu-system {
+	position:relative;
+}
+.menu-container {
+	position:absolute;
+	z-index:1;
+	top:0;
+	left:0;
+	overflow:hidden;
+	transform:translate(($bubble-size/2), ($bubble-size/2));
+	transition:all 300ms ease-in-out;
+	max-width:$menu-min-width;
+	max-height:600px;
+	&.closed {
+		max-width:$bubble-size;
+		max-height:$bubble-size;
+		border-radius:50%;
+		transform:translate(0,0);
+		pointer-events:none;
+	}
+}
+.menu {
+	margin:0; padding:0;
+	li {
+		list-style:none;
+		margin:0;
+		a {
+			display:block;
+			background-color:$brand-primary;
+			color:#fff;
+			padding:$padding-menu;
+			font-size:1.5em;
+			text-decoration:none;
+			min-width:$menu-min-width;
+			transition:all 100ms ease-out;
+			&:hover {
+				text-indent:0.25em;
+				background-color:darken($brand-primary, 15%);
+			}
+		}
+	}
+}
+
+@keyframes radiate {
+	30% {
+		transform:scale(3);
+	}
+	60% {
+		transform:scale(4);
+	}
+	100% {
+		transform:scale(10);
+		opacity:0;
+	}
+}

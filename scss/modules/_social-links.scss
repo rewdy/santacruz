@@ -1,0 +1,38 @@
+.sharing {
+    padding:1em 0;
+    border-style:solid;
+    border-color:$brand-secondary;
+    border-width:10px 0;
+    background-color:fade-out($brand-warning, 0.5);
+}
+.sharing-heading {
+    letter-spacing:0.05em;
+    @media (min-width: breakpoint(md)) {
+        margin-bottom:0;
+    }
+}
+.sharing-list {
+    display:flex;
+    align-items:center;
+    margin:0;
+    padding:0;
+    li {
+        list-style:none;
+        margin:0;
+        padding:0 0.5em;
+    }
+    a {
+        display:inline-block;
+        padding:0.25em 0.5em;
+        background-color:$brand-info;
+        color:contrasting-text($brand-info);
+        text-decoration: none;
+        transition:transform $animation-duration ease-out, box-shadow $animation-duration ease-out;
+        &:hover {
+            background-color:darken($brand-info, 12%);
+            color:contrasting-text(darken($brand-info, 12%));
+            transform:scale(1.07) rotate(2deg);
+            @include hovershadow();
+        }
+    }
+}

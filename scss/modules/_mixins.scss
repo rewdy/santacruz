@@ -1,0 +1,34 @@
+// STANDARD STYLINGS
+// Standard focus style for links et al
+@mixin focus() {
+	outline:2px dotted $form-color-focus;
+	outline-offset:4px;
+}
+
+// functional shadow for items that are appearing over other items
+@mixin overshadow() {
+	box-shadow:0 0.5em 1em rgba(0,0,0,0.2);
+}
+@mixin hovershadow() {
+  box-shadow:0 0 0.5em rgba(0,0,0,0.15);
+}
+
+// FUNCTIONS
+@function breakpoint($which) {
+	$min: map-get($grid-breakpoints, $which);
+	@return $min;
+}
+@function breakpoint-down($which) {
+	$min: map-get($grid-breakpoints, $which);
+	@return $min - 0.02px;
+}
+
+// UTILITIES
+@mixin accessible-hide() {
+	position:absolute;
+	top:0;
+	left:0;
+	width:0;
+	height:0;
+	overflow:hidden;
+}

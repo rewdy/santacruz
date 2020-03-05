@@ -1,0 +1,59 @@
+/*	------------------
+	Aninmation classes
+	---
+	Used in conjunction with the js.animations.js file.
+*/
+
+// core class that must be applied to all animated elements
+.animate {
+	position:relative;
+	transition:transform $animation-duration ease-out, opacity $animation-duration ease-out;
+	&.slide-up {
+		opacity:0;
+		transform:translateY(3em);
+		&.done {
+			opacity:1;
+			transform:translateY(0);
+		}
+	}
+	&.zoom-in {
+		opacity:0;
+		transform:scale(0.75);
+		&.done {
+			opacity:1;
+			transform:scale(1);
+		}
+	}
+	&.zoom-out {
+		opacity:0;
+		transform:scale(1.5);
+		&.done {
+			opacity:1;
+			transform:scale(1);
+		}
+	}
+}
+
+.ripple,
+.btn {
+	position:relative;
+	overflow:hidden;
+	.wave {
+		display:block;
+		position:absolute;
+		background:fade-out(darken($accent, 30%), 0.7);
+		border-radius:100%;
+		opacity:1;
+		transform:scale(0);
+		&.activate {
+			animation:ripple 0.7s ease-out;
+		}
+	}
+}
+
+@keyframes ripple {
+	100% {
+		opacity:0;
+		transform:scale(2)
+	}
+}

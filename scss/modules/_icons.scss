@@ -1,0 +1,36 @@
+svg.icon {
+	width: 1.25em;
+	height: 1em;
+	line-height: 1em;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+	position: relative;
+	top: 3px;
+
+	&-fw {
+		width: 1.2em;
+		text-align: center;
+	}
+}
+
+@mixin icon-scale($val) {
+	font-size:$val * $font-size;
+	stroke-width: $val;
+}
+
+svg.icon-2x {
+	@include icon-scale(2);
+}
+
+$icon-play-size:80px;
+.icon-play {
+	display:inline-block;
+	width:0;
+	height:0;
+	border-style:solid;
+	border-width:($icon-play-size/2) 0 ($icon-play-size/2) $icon-play-size;
+	border-color:transparent transparent transparent $brand-warning;
+}
