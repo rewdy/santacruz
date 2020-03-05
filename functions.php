@@ -105,10 +105,10 @@ function santacruz_widget_init() {
 			'name' => __('Footer'),
 			'desc' => __('Place widgets in the site footer. These look best in multiples of two (2, 4, etc).'),
 			'id' => 'footer-widgets',
-			'before_widget' => '<div id="%1$s" class="g2 widget %2$s">',
-			'after_widget' => '</div></div>',
+			'before_widget' => '<div id="%1$s" class="widget col">',
+			'after_widget' => '</div>',
 			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2><div class="lined">'
+			'after_title' => '</h2>'
 		)
 	);
 }

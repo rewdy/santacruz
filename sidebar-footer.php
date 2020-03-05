@@ -10,8 +10,8 @@ Sidebar footer template file
 
 						<?php if (is_active_sidebar('footer-widgets')) : ?>
 							<div id="footer-widgets" class="liner">
-
-								<?php dynamic_sidebar('footer-widgets'); ?>
-
+								<div class="row">
+									<?php dynamic_sidebar('footer-widgets'); ?>
+								</div>
 							</div>
 						<?php endif; ?>
