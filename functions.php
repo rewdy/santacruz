@@ -162,36 +162,42 @@ if (!function_exists('get_author_posts_link')) {
 function santacruz_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
 		extract($args, EXTR_SKIP);
-		$args['avatar_size'] = 32;
+		$args['avatar_size'] = 48;
 		$args['reply_text'] = '<span class="text">'.__('Reply').'</span>';
 ?>
 		<li id="comment-<?php comment_ID() ?>" <?php comment_class(empty($args['has_children']) ? '' : 'parent') ?>>
 
-			<article class="comment">
+			<article class="comment<?php echo ($comment->comment_approved == '0') ? ' comment-pending' : ''; ?>">
 
 				<?php if ($comment->comment_approved == '0') : ?>
-				<p class="comment-awaiting-moderation box-help"><?php _e('Your comment is awaiting moderation.') ?></p>
+				<p class="comment-awaiting-moderation box box-warning text-center"><?php _e('Your comment is awaiting moderation.') ?></p>
 				<?php endif; ?>
 
 				<?php comment_text() ?>
 
-				<!-- Comment details -->
-				<div class="details">
-					<span class="comment-date"><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>"><?php printf(__('%1$s %2$s'), get_comment_date(),  get_comment_time()); ?></a></span> &ndash;
-					<span class="comment-author vcard"><?php printf(__('<span class="says">Posted by</span> <cite class="fn">%s</cite>'), get_comment_author_link()) ?></span>
-					<!-- <span class="avatar"><?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['avatar_size'] ); ?></span> -->
-				</div>
+				<div class="row align-items-center">
+					<!-- Comment details -->
+					<div class="comment-details col-sm">
+						<span class="comment-date"><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>"><?php printf(__('%1$s %2$s'), get_comment_date(),  get_comment_time()); ?></a></span>
+						<span class="comment-author">
+							<span><?php _e('Posted by'); ?></span>
+							<span class="comment-avatar"><?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['avatar_size'] ); ?></span>
+							<span class="vcard"><?php comment_author_link() ?></span>
+						</span>
+					</div>
 
-				<!-- Comment links -->
-				<div class="links">
-					<ul class="link-list">
-						<li><?php comment_reply_link(array_merge($args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?></li>
-						<li><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>" title="Permalink"><span class="text">
-							Comment permalink</span></a></li>
-						<?php edit_comment_link('<span class="text">Edit</span>','<li>','</li>'); ?>
-					</ul>
+					<!-- Comment links -->
+					<div class="comment-links col-sm-auto">
+						<?php comment_reply_link(array_merge($args, array(
+							'add_below' => $add_below,
+							'depth' => $depth,
+							'max_depth' => $args['max_depth'],
+							'reply_text' => get_santacruz_icon('arrow-down-left') . __('Retort')
+						))) ?>
+						<a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>" class="btn btn-secondary" title="Permalink"><?php santacruz_icon('link'); ?> <span class="sr-only">Link to comment</span></a>
+						<?php edit_comment_link(get_santacruz_icon('edit-3') . '<span class="text">' . __('Edit') . '</span>','',''); ?>
+					</div>
 				</div>
-
 			</article>
 		</li>
 <?php
@@ -206,12 +212,14 @@ function santacruz_comment($comment, $args, $depth) {
 function santacruz_comment_form() {
 	// define fields
 	$fields = array(
-		'author' => '<p class="form-item label-inline comment-form-author">' . '<label for="author">' . __( 'Name' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+		'open_dir' => '<div class="row">',
+		'author' => '<p class="form-item col-12 col-md label-inline comment-form-author">' . '<label for="author">' . __( 'Name' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
 		'<span class="input-holder"><input id="author" name="author" type="text" class="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></span></p>',
-		'email'  => '<p class="form-item label-inline comment-form-email"><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+		'email'  => '<p class="form-item col-12 col-md label-inline comment-form-email"><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
 		'<span class="input-holder"><input id="email" name="email" type="text" class="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></span></p>',
-		'url'	=> '<p class="form-item label-inline comment-form-url"><label for="url">' . __( 'Website' ) . '</label>' .
+		'url'	=> '<p class="form-item col-12 col-md label-inline comment-form-url"><label for="url">' . __( 'Website' ) . '</label>' .
 		'<span class="input-holder"><input id="url" name="url" type="text" class="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></span></p>',
+		'close_div' => '</div>'
 	);
 
 	// build our new defaults array (based off of default defaults. customized values noted.

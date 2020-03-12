@@ -35,8 +35,8 @@ legend {
 	position:relative;
 	top:-1em;
 	left:-1.25em;
-	font-family:$alt-font;
-	font-weight:normal;
+	font-family:$font-family;
+	font-weight:$font-weight-bold;
 	background-color:$screen-lt;
 	box-sizing:content-box;
 	+ * {
@@ -47,8 +47,8 @@ legend {
 // standard labels, legends for checkbox and radio arrays
 label, .label {
 	display:block;
-	font-family:$alt-font;
-	font-weight:normal;
+	font-family:$font-family;
+	font-weight:$font-weight-bold;
 }
 
 // standard input help

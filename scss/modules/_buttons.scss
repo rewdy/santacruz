@@ -27,11 +27,19 @@
 }
 @mixin btn-color($which) {
     background-color: $which;
-    color: contrasting-text($which);
+    @if ($which == $brand-primary) {
+        color:#fff;
+    } @else {
+        color: contrasting-text($which);
+    }
     &:hover {
         $bg-color:lighten-darken($which, 8%);
         background-color: $bg-color;
-        color: contrasting-text($bg-color);
+        @if ($which == $brand-primary) {
+            color:#fff;
+        } @else {
+            color: contrasting-text($bg-color);
+        }
     }
 }
 

@@ -48,7 +48,7 @@ h2, .h2 {
 	}
 }
 h3, .h3 {
-	font-size:1em;
+	font-size:1.4em;
 }
 h4, .h4 {
 	font-size:1em;
@@ -72,47 +72,13 @@ ol {
 	li {
 		margin-left:($font-scale*2) + em;
 	}
-	&.inline li {
-		margin:0 (($font-scale/2) + em) 0 0;
-		display:inline;
-	}
-	&.lined {
-		border-bottom:1px solid $line-color;
-		li {
-			margin-left:0;
-			list-style-position:inside;
-			padding:0.25em 0.25em 0.25em 0.5em;
-			border-top:1px solid $line-color;
-		}
-	}
-	&.blocked li {
-		margin:0;
+}
+
+.list-inline {
+	li {
+		display:inline-block;
 		list-style:none;
-		a {
-			display:block;
-			padding:0.25em;
-			&:hover {
-				background-color:$screen;
-			}
-		}
-	}
-	&.blocked.lined {
-		li {
-			padding:0;
-		}
-	}
-	&.button-list {
-		&.text-center {
-			margin:0 auto $text-margin-bottom auto;
-		}
-		margin:0 0 $text-margin-bottom 0;
-		display:table;
-		table-layout:fixed;
-		li {
-			display:table-row;
-			list-style:none;
-			// The <a> button styles are in _forms
-		}
+
 	}
 }
 
@@ -308,9 +274,13 @@ figure.right {
 	}
 }
 
+.badge {
+
+}
+
 .box {
-	padding:$line-height;
-	margin:0 0 $line-height 0;
+	padding:$padding-box;
+	margin:0 0 $text-margin-bottom 0;
 	border-radius:$box-radius;
 	&-lined {
 		border:1px solid $line-color;

@@ -9,7 +9,7 @@
 // VARIABLES
 // Layout
 $grid-columns:12;
-$grid-gutter:2em;
+$grid-gutter:40px;
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -96,6 +96,7 @@ $padding-menu:0.75em 1em;
 $padding-button:0.5em 1em;
 $padding-btn: $padding-button;
 $padding-input:0.5rem;
+$padding-box:0.5rem;
 
 // Screens
 $screen: #ddd;

@@ -1,3 +1,126 @@
 .comments {
     margin-top:3em;
 }
+
+.comment-list {
+    margin:0;
+    li {
+        list-style:none;
+        margin:0;
+    }
+    .children {
+        margin-left:4em;
+        .comment::before {
+            color:fade-out($brand-primary, 0.3);
+        }
+    }
+}
+
+.comment {
+    margin-bottom:3em;
+    background-color:fade-out(#fff, 0.5);
+    position:relative;
+    z-index:1;
+    &-pending {
+        background-color:fade-out(#ccc, 0.5);
+    }
+    &:before {
+        content:"\201C";
+        position:absolute;
+        z-index:-1;
+        top:0;
+        left:0;
+        font-size:5em;
+        line-height:1;
+        color:fade-out($brand-info, 0.3);
+        transform:translate(-54%, -22%);
+    }
+}
+
+.comment-details,
+.comment-links {
+    font-size:$font-size-small;
+    line-height:1.2;
+}
+.comment-date {
+    display:inline-block;
+    padding:0 0 0 1em;
+    border-left:1.5em solid $brand-secondary;
+    color:$text-light;
+    a {
+        color: currentColor;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+            color:#000;
+        }
+    }
+}
+
+.comment-author {
+    &:before {
+        content:'\2013';
+        padding:0 0.25em;
+    }
+}
+
+.comment-avatar {
+    display:inline-block;
+    border-radius:0.75em;
+    overflow: hidden;
+    img {
+        display:block;
+        height:1.5em;
+        width:auto;
+    }
+}
+
+@media (max-width:breakpoint(sm)) {
+    .comment-details {
+        margin-bottom:1em;
+        line-height:$line-height;
+    }
+    .comment-date {
+        display:block;
+    }
+    .comment-author {
+        padding-left:2.5em;
+        &:before {
+            content:none;
+        }
+    }
+}
+
+.comment-reply-link,
+#cancel-comment-reply-link {
+    @extend .btn;
+    @extend .btn-secondary;
+}
+.comment-edit-link {
+    @extend .btn;
+    @extend .btn-success;
+}
+
+.header-comment {
+    &-wrap {
+        position:relative;
+    }
+    &-count {
+        position: absolute;
+        display:block;
+        top:0;
+        left:0;
+        width:1.5em;
+        height:1.5em;
+        font-size:2.5rem;
+        border-radius:0.75em;
+        text-align:center;
+        background-color:$brand-primary;
+        color:#fff;
+        transform:translate(-60%, -40%) rotate(-18deg);
+    }
+}
+
+.comment-respond {
+    margin-top:3em;
+}

@@ -19,7 +19,7 @@ if (post_password_required()) {
 
 <div class="comments">
 	<?php $comments_count = get_comments_number('0', '1', '%'); ?>
-	<h2 class="text-center"><a name="comments" id="comments"></a><?php if ($comments_count) : ?><span class="count"><?php echo $comments_count; ?></span><?php endif; ?>Comments</h2>
+	<h2 class="text-center"><a name="comments" id="comments"></a><span class="header-comment-wrap"><?php if ($comments_count) : ?><span class="header-comment-count"><?php echo $comments_count; ?></span> <?php endif; ?>Comments</span></h2>
 	<?php if (have_comments()) : ?>
 	<ul class="comment-list">
 		<?php
